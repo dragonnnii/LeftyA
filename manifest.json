@@ -1,0 +1,11 @@
+{
+  "Name": "W-Key Click Swapper",
+  "Author": "User",
+  "Version": "1.1.0",
+  "Description": "Press W to toggle left-click to right-click swapping.",
+  "UniqueID": "User.WClickSwapper",
+  "EntryDll": "LeftClickToRightClick.dll",
+  "MinimumApiVersion": "4.0.0",
+  "MinimumGameVersion": "1.6.0",
+  "UpdateKeys": []
+}
