@@ -1,0 +1,30 @@
+name: Build Stardew Mod
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: '6.0.x' # Required for Stardew 1.6
+
+      - name: Restore dependencies
+        run: dotnet restore
+
+      - name: Build mod
+        # The -p:GamePath="." trick prevents the "Game not found" error on GitHub
+        run: dotnet build --configuration Release -p:GamePath="."
+
+      - name: Upload Mod Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: WClickSwapper-Build
+          # This grabs the compiled mod folder
+          path: bin/Release/net6.0/
